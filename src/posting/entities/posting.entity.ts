@@ -9,11 +9,11 @@ export class Posting {
 
     @IsNotEmpty ()
     @Column ({length: 100, nullable: false})
-    titulo: string
+    title: string
 
     @IsNotEmpty ()
     @Column ({length: 1000, nullable: false})
-    texto: string;
+    text: string;
 
     @UpdateDateColumn ()
     data: Date;

@@ -9,4 +9,4 @@ import { Posting } from "./entities/posting.entity";
     controllers: [],
     exports: [TypeOrmModule]
 })
-export class PostagemModule {}
+export class PostingModule {}
