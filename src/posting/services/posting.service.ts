@@ -20,11 +20,11 @@ export class PostingService {
         });
 
         if (!searchPosting)
-            throw new HttpException('Post not found!', HttpStatus.NOT_FOUND)
+            throw new HttpException ('Post not found!', HttpStatus.NOT_FOUND)
         return searchPosting
     }
 
-    async findByTitulo(title: String): Promise<Posting []> {
+    async findByTitle (title: String): Promise<Posting []> {
         return await this.postingRepository.find ({
             where: {title: ILike (`%${title}%`)}
         })
@@ -46,8 +46,8 @@ export class PostingService {
         let searchPosting = await this.findById (id);
 
         if (!searchPosting)
-            throw new HttpException('Post not found!', HttpStatus.NOT_FOUND)
+            throw new HttpException ('Post not found!', HttpStatus.NOT_FOUND)
 
-        return await this.postingRepository.delete(id);
+        return await this.postingRepository.delete (id);
     }
 }
