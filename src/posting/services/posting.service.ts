@@ -12,14 +12,14 @@ export class PostingService {
 
     async findAll (): Promise <Posting []> {
         return await this.postingRepository.find ({
-            relations: {theme: true}
+            relations: {theme: true, user: true}
         });
     }
 
     async findById (id: number): Promise <Posting> {
         let searchPosting = await this.postingRepository.findOne ({
             where: {id},
-            relations: {theme: true}
+            relations: {theme: true, user: true}
         });
 
         if (!searchPosting)
@@ -30,7 +30,7 @@ export class PostingService {
     async findByTitle (title: String): Promise<Posting []> {
         return await this.postingRepository.find ({
             where: {title: ILike (`%${title}%`)},
-            relations: {theme: true}
+            relations: {theme: true, user: true}
         })
     }
 
