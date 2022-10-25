@@ -11,12 +11,15 @@ export class ThemeService {
     ) { }
 
     async findAll (): Promise <Theme []> {
-        return await this.themeRepository.find ({});
+        return await this.themeRepository.find ({
+            relations: {posting: true}
+        });
     }
 
     async findById (id: number): Promise <Theme> {
         let searchTheme = await this.themeRepository.findOne ({
-            where: {id}
+            where: {id},
+            relations: {posting: true}
         });
 
         if (!searchTheme)
@@ -26,7 +29,8 @@ export class ThemeService {
 
     async findByDescription (description: string): Promise <Theme []> {
         return await this.themeRepository.find ({
-            where: {description: ILike (`%${description}%`)}
+            where: {description: ILike (`%${description}%`)},
+            relations: {posting: true}
         })
     }
 
