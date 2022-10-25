@@ -1,6 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { Posting } from './posting/entities/posting.entity';
+import { PostingModule } from './posting/posting.module';
+import { Theme } from './theme/entities/theme.entity';
+import { ThemeModule } from './theme/theme.module';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot ({
@@ -10,9 +15,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: 'root',
       database: 'db_blog',
-      entities: [],
+      entities: [Posting, Theme],
       synchronize: true
-    })
+    }),
+    PostingModule,
+    ThemeModule
   ],
   controllers: [],
   providers: [],
