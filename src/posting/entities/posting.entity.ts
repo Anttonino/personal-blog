@@ -1,5 +1,6 @@
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Theme } from "src/theme/entities/theme.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity({name: 'posting_tb'})
 export class Posting {
@@ -17,4 +18,9 @@ export class Posting {
 
     @UpdateDateColumn ()
     data: Date;
+
+    @ManyToOne (() => Theme, (theme) => theme.posting,{
+        onDelete: "CASCADE"
+    })
+    theme: Theme
 }

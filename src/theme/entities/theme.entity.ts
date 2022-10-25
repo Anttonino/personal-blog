@@ -1,5 +1,6 @@
 import { IsNotEmpty } from "class-validator"
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { Posting } from "src/posting/entities/posting.entity"
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity ({name: "theme_tb"})
 export class Theme {
@@ -10,4 +11,8 @@ export class Theme {
     @IsNotEmpty ()
     @Column ({length: 300, nullable: false})
     description: string
+
+    @OneToMany (() => Posting, (posting) => posting.theme)
+    posting: Posting []
+    
 }
