@@ -5,7 +5,7 @@ import { DeleteResult, ILike, Repository } from "typeorm";
 import { Theme } from "../entities/theme.entity";
 
 @Injectable ()
-export class themeService {
+export class ThemeService {
     constructor (@InjectRepository (Theme)
         private themeRepository: Repository <Theme>
     ) { }
