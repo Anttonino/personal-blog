@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
 import { Posting } from './posting/entities/posting.entity';
 import { PostingModule } from './posting/posting.module';
@@ -19,7 +20,8 @@ import { ThemeModule } from './theme/theme.module';
       synchronize: true
     }),
     PostingModule,
-    ThemeModule
+    ThemeModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],
