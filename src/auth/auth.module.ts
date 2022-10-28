@@ -3,9 +3,10 @@ import { JwtModule } from '@nestjs/jwt/dist';
 import { PassportModule } from '@nestjs/passport';
 import { UserModule } from '../users/user.module';
 import { jwtConstants } from './constants/constants';
-import { Bcrypt } from './entities/bcrypt/bcrypt';
+import { Bcrypt } from './bcrypt/bcrypt';
 import { AuthService } from './services/auth.service';
 import { LocalStrategy } from './strategy/local.strategy';
+import { AuthController } from './controllers/auth.controller';
 
 @Module({
   imports: [
@@ -16,8 +17,8 @@ import { LocalStrategy } from './strategy/local.strategy';
       signOptions: { expiresIn: '24h' },
     }),
   ],
-  providers: [Bcrypt, AuthService, LocalStrategy],
-  controllers: [],
+  providers: [Bcrypt, AuthService, LocalStrategy, JwtModule],
+  controllers: [AuthController],
   exports: [Bcrypt],
 })
 export class AuthModule { }
