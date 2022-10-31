@@ -1,10 +1,11 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
-import { ApiBearerAuth } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 import { Theme } from "../entities/theme.entity";
 import { ThemeService } from "../services/theme.service";
 
+@ApiTags ('Theme')
 @UseGuards (JwtAuthGuard)
 @ApiBearerAuth ()
 @Controller ("/theme")

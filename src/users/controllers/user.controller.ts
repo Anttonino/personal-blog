@@ -5,7 +5,7 @@ import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 import { User } from "../entities/user.entity";
 import { UserService } from "../services/user.service";
 
-@ApiTags ('user')
+@ApiTags ('User')
 @Controller ("/users")
 export class UserController {
     constructor (private readonly userService: UserService) { }

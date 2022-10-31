@@ -5,7 +5,7 @@ import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 import { Posting } from "../entities/posting.entity";
 import { PostingService } from "../services/posting.service";
 
-@ApiTags ('Posting')
+@ApiTags ('Post')
 @UseGuards (JwtAuthGuard)
 @Controller ("/posting")
 @ApiBearerAuth () 
