@@ -1,29 +1,37 @@
+import { ApiProperty } from "@nestjs/swagger"
 import { IsEmail, IsNotEmpty, MinLength } from "class-validator"
-import { Posting } from "src/posting/entities/posting.entity"
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+
+import { Posting } from "../../posting/entities/posting.entity"
 
 @Entity({name: "users_tb"})
 export class User {
 
-    @PrimaryGeneratedColumn() 
+    @PrimaryGeneratedColumn ()
+    @ApiProperty () 
+
     public id: number
 
-    @IsNotEmpty()
-    @Column({length: 255, nullable: false}) 
+    @IsNotEmpty ()
+    @Column ({length: 255, nullable: false}) 
+    @ApiProperty () 
     public name: string
 
-    @IsEmail()
-    @Column({length: 255, nullable: false })
+    @IsEmail ()
+    @Column ({length: 255, nullable: false })
+    @ApiProperty ({example: "email@email.com.br"})
     public username: string
 
-    @IsNotEmpty()
-    @MinLength(8)
-    @Column({length: 255, nullable: false }) 
+    @IsNotEmpty ()
+    @MinLength (8)
+    @Column ({length: 255, nullable: false })
+    @ApiProperty ()
     public password: string
 
-    @Column({length: 5000 }) 
+    @Column ({length: 5000 })
+    @ApiProperty ()
     public foto: string
 
-    @OneToMany(() => Posting, (posting) => posting.user)
+    @OneToMany (() => Posting, (posting) => posting.user)
     posting: Posting []
 }
